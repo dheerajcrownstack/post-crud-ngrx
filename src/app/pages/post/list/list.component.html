@@ -1,0 +1,24 @@
+<div>
+    <h1 class="text-3xl font-bold text-center text-primary">
+        Posts
+    </h1>
+
+    <div *ngFor="let item of posts" class="p-6">
+        <div class="max-w-full p-6 mb-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {{item.title}}
+            </h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                {{item.body}}
+            </p>
+            <div class="flex items-end justify-end">
+                <button (click)="viewPost(item.id)" class="bg-blue-600 text-white mr-2 p-2 rounded shadow">
+                    View
+                </button>
+                <button (click)="deletePost(item.id)" class="bg-red-500 text-white p-2 rounded shadow">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
