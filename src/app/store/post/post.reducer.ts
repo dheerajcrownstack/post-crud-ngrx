@@ -4,12 +4,14 @@ import { POSTACTIONENUM } from "./post.action";
 
 export interface IPostInitialState {
     posts: IPost[],
+    postDetail: IPost | null,
     success: boolean,
     failed: boolean
 }
 
 const initialState: IPostInitialState = {
     posts: [],
+    postDetail: null,
     success: false,
     failed: false,
 }
@@ -33,6 +35,24 @@ export const postReducer = (state: IPostInitialState = initialState, action: IAc
                 posts: action.payload.posts,
                 success: false,
                 failed: true,
+            }
+        case POSTACTIONENUM.GET_POST_DETAIL:
+            return {
+                ...state
+            }
+        case POSTACTIONENUM.GET_POST_DETAIL_SUCCESS:
+            return {
+                ...state,
+                postDetail: action.payload.post
+            }
+        case POSTACTIONENUM.GET_POST_DETAIL_FAILED:
+            return {
+                ...state,
+                postDetail: null
+            }
+        case POSTACTIONENUM.DELETE_POST:
+            return {
+                ...state
             }
         default:
             return state;
